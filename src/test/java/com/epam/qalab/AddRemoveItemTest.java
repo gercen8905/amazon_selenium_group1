@@ -33,10 +33,10 @@ public class AddRemoveItemTest {
         addToCartButton.click();
 
         WebElement addedToCart = driver.findElement(By.xpath("//span[contains(text(), 'Added to Cart')]"));
-        Assert.assertEquals(addedToCart.getText(), "Added to Cart");
+        Assert.assertEquals(addedToCart.getText(), "Added to Cart", "Adding to Cart doesn't work properly");
 
         WebElement navCartCount = driver.findElement(By.xpath("//span[@id='nav-cart-count' and contains(text(), '1')]"));
-        Assert.assertEquals(navCartCount.getText(), "1");
+        Assert.assertEquals(navCartCount.getText(), "1", "Wrong number of items in the Cart");
 
         driver.close();
         driver.quit();
@@ -46,7 +46,6 @@ public class AddRemoveItemTest {
     public void removeItemFromCartTest() {
         WebDriverManager.chromedriver().browserVersion("98").setup();
         WebDriver driver = new ChromeDriver();
-
         driver.get("https://www.amazon.com/");
 
         String currentUrl = driver.getCurrentUrl();
@@ -69,7 +68,11 @@ public class AddRemoveItemTest {
 
         WebElement heading = new WebDriverWait(driver, Duration.ofSeconds(3))
                 .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h1[@class='a-spacing-mini a-spacing-top-base']")));
-        Assert.assertEquals(heading.getText(), "Your Amazon Cart is empty.", "Your Amazon Cart should be empty");
+        Assert.assertEquals(heading.getText(), "Your Amazon Cart is empty.", "Your Amazon Cart is not empty or not available");
+
+        WebElement currencyPrice = driver.findElement(By.xpath("//span [@class='a-size-medium a-color-base sc-price sc-white-space-nowrap']"));
+        String price = currencyPrice.getText().trim().replaceFirst("\\D+", "").replace(",", ".");
+        Assert.assertEquals(price, "0.00", "Subtotal is not '0.00'");
 
         driver.close();
         driver.quit();

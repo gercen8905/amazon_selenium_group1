@@ -36,22 +36,21 @@ public class FilteringAndSearchingTest {
     @Test
     public void filteredByFeaturedBrand() {
 
-        WebElement categoryLink = driver.findElement(By.xpath("//a[@aria-label=\"Toys & Games\"]"));
-        categoryLink.click();
+        this.choseCategory();
 
-        WebElement anyFeaturedBrand = driver.findElement(By.xpath("//span[text()='LEGO']"));
+        WebElement anyFeaturedBrand = driver.findElement(By.xpath("//*[text()=\"Featured Brands\"]/parent::*/parent::*/ul/li[1]//a/span"));
+        String nameFeaturedBrand = anyFeaturedBrand.getAttribute("textContent");
         anyFeaturedBrand.click();
 
         List<WebElement> productsDescription = driver.findElements(By.xpath("//*[contains(@cel_widget_id,\"RESULTS\")]//h2"));
 
-        Assert.assertTrue(productsDescription.stream().allMatch(item -> item.getText().contains("LEGO")));
+        Assert.assertTrue(productsDescription.stream().allMatch(item -> item.getText().contains(nameFeaturedBrand)));
     }
 
     @Test
     public void filteringByPrice() {
 
-        WebElement categoryLink = driver.findElement(By.xpath("//a[@aria-label=\"Computers & Accessories\"]"));
-        categoryLink.click();
+        this.choseCategory();
 
         WebElement priceRangeOption = driver.findElement(By.xpath("//*[text()='Price']/parent::*/following-sibling::ul/li[1]//a"));
         priceRangeOption.click();
@@ -68,8 +67,7 @@ public class FilteringAndSearchingTest {
     @Test
     public void sortingInsideCategory() {
 
-        WebElement anyCategory = driver.findElement(By.xpath("//a[@aria-label=\"Toys & Games\"]"));
-        anyCategory.click();
+        this.choseCategory();
 
         WebElement btnSeeAllResults = driver.findElement(By.linkText("See all results"));
         btnSeeAllResults.click();
@@ -86,5 +84,10 @@ public class FilteringAndSearchingTest {
         Double secondElemPrice = Double.parseDouble(productsPrices.get(1).getAttribute("textContent").substring(1));
 
         Assert.assertTrue(firstElemPrice > secondElemPrice);
+    }
+
+    public void choseCategory() {
+        WebElement categoryLink = driver.findElement(By.xpath("(//*[@class=\"a-link-normal quadrant-overlay\"])[1]"));
+        categoryLink.click();
     }
 }

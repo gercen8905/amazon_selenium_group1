@@ -38,8 +38,8 @@ public class SearchFieldTest {
     @Test
     public void incorrectInputShouldReturnNoResults() {
         search(incorrect);
-        String noResults = driver.findElement(By.xpath("//*[@class=\"a-row\"]/descendant::span[1]")).getText();
-        String actualWithDot = driver.findElement(By.xpath("//*[@class=\"a-row\"]/descendant::span[2]")).getText() + ".";
+        String noResults = driver.findElement(By.xpath("//*[@class='a-row']/descendant::span[1]")).getText();
+        String actualWithDot = driver.findElement(By.xpath("//*[@class='a-row']/descendant::span[2]")).getText() + ".";
         Assert.assertEquals(noResults + " " + actualWithDot, "No results for " + incorrect + ".",
                 "Nevertheless something was found");
     }
@@ -47,7 +47,7 @@ public class SearchFieldTest {
     @Test
     public void searchedProductShouldBeDisplayedInSearchResults() {
         search(correct);
-        Assert.assertEquals(driver.findElement(By.xpath("//*[@class=\"a-color-state a-text-bold\"]"))
+        Assert.assertEquals(driver.findElement(By.xpath("//*[@class='a-color-state a-text-bold']"))
                         .getText().replace("\"", ""), correct,
                 "Name of product is not displayed correctly");
     }
@@ -56,8 +56,7 @@ public class SearchFieldTest {
     public void foundProductsShouldContainSearchedWord() {
         search(correct);
         List<WebElement> searchResult =
-                driver.findElements(By.xpath("//*[contains(@class,\"normal\") and contains(text()," + incorrect.toUpperCase() + ")]"));
-        System.out.println(searchResult.size());
+                driver.findElements(By.xpath("//*[contains(@class,'normal') and contains(text()," + incorrect.toUpperCase() + ")]"));
         Assert.assertTrue(searchResult.size() > 0, "There is no name of product in the results of search");
     }
 

@@ -28,15 +28,13 @@ public class FilteringAndSearchingTest {
 
     @AfterTest
     public void afterTest() {
-        driver.close();
         driver.quit();
     }
 
-
     @Test
-    public void filteredByFeaturedBrand() {
+    public void successfulFilteredByFeaturedBrand() {
 
-        this.choseCategory();
+        choseCategory();
 
         WebElement anyFeaturedBrand = driver.findElement(By.xpath("//*[text()=\"Featured Brands\"]/parent::*/parent::*/ul/li[1]//a/span"));
         String nameFeaturedBrand = anyFeaturedBrand.getAttribute("textContent");
@@ -48,9 +46,9 @@ public class FilteringAndSearchingTest {
     }
 
     @Test
-    public void filteringByPrice() {
+    public void successfulFilteringByPrice() {
 
-        this.choseCategory();
+        choseCategory();
 
         WebElement priceRangeOption = driver.findElement(By.xpath("//*[text()='Price']/parent::*/following-sibling::ul/li[1]//a"));
         priceRangeOption.click();
@@ -65,9 +63,9 @@ public class FilteringAndSearchingTest {
     }
 
     @Test
-    public void sortingInsideCategory() {
+    public void successfulSortingDescendingWithinCategory() {
 
-        this.choseCategory();
+        choseCategory();
 
         WebElement btnSeeAllResults = driver.findElement(By.linkText("See all results"));
         btnSeeAllResults.click();
@@ -86,7 +84,7 @@ public class FilteringAndSearchingTest {
         Assert.assertTrue(firstElemPrice > secondElemPrice);
     }
 
-    public void choseCategory() {
+    private void choseCategory() {
         WebElement categoryLink = driver.findElement(By.xpath("(//*[@class=\"a-link-normal quadrant-overlay\"])[1]"));
         categoryLink.click();
     }

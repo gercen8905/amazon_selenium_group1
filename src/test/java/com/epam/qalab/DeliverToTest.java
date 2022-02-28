@@ -19,7 +19,6 @@ import java.util.List;
 
 public class DeliverToTest {
     WebDriver driver;
-    String country = "Bulgaria";
 
     @BeforeTest
     public void setUp() {
@@ -69,6 +68,7 @@ public class DeliverToTest {
 
     @Test
     public void verifyShippingToCountry() {
+        String country = "Bulgaria";
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement oldLocation = driver.findElement(By.id("glow-ingress-line2"));
 

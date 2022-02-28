@@ -38,13 +38,15 @@ public class DeliverToTest {
         WebElement deliverToButton = driver.findElement(By.id("nav-global-location-popover-link"));
         deliverToButton.click();
 
-        WebElement zipCodeField = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOfElementLocated(By.id("GLUXZipUpdateInput")));
+        WebElement zipCodeField = new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.visibilityOfElementLocated(By.id("GLUXZipUpdateInput")));
         zipCodeField.sendKeys("37219");
 
         WebElement applyButton = driver.findElement(By.xpath("//*[@data-action='GLUXPostalUpdateAction']"));
         applyButton.click();
 
-        WebElement continueButton = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='a-popover-footer']//input[@id='GLUXConfirmClose']")));
+        WebElement continueButton = new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='a-popover-footer']//input[@id='GLUXConfirmClose']")));
         continueButton.click();
 
         WebDriverWait wait = new WebDriverWait(driver, 10);
@@ -89,7 +91,8 @@ public class DeliverToTest {
         WebElement category = driver.findElement(By.xpath("//a[@aria-label='Keyboards']"));
         category.click();
 
-        WebElement keyboardItem = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@class='s-main-slot s-result-list s-search-results sg-row']/div[@data-component-type='s-search-result'][1]//h2/a")));
+        WebElement keyboardItem = new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@class='s-main-slot s-result-list s-search-results sg-row']/div[@data-component-type='s-search-result'][1]//h2/a")));
         keyboardItem.click();
 
         String depositToInfo = driver.findElement(By.xpath("//*[@id='exports_desktop_qualifiedBuybox_tlc_feature_div']/span[@class='a-size-base a-color-secondary']")).getText();

@@ -32,7 +32,7 @@ public class DeliverToTest {
     }
 
     @Test
-    public void verifyZipCodeUpdateTest() {
+    public void verifyZipCodeUpdate() {
         WebElement oldLocation = driver.findElement(By.id("glow-ingress-line2"));
 
         WebElement deliverToButton = driver.findElement(By.id("nav-global-location-popover-link"));
@@ -57,7 +57,7 @@ public class DeliverToTest {
     }
 
     @Test
-    public void verifyPolandIsPresentTest() {
+    public void verifyPolandIsPresent() {
         WebElement deliverToButton = driver.findElement(By.id("nav-global-location-popover-link"));
         deliverToButton.click();
 
@@ -73,7 +73,7 @@ public class DeliverToTest {
     }
 
     @Test
-    public void verifyShippingToCountryTest() {
+    public void verifyShippingToCountry() {
         WebElement oldLocation = driver.findElement(By.id("glow-ingress-line2"));
 
         WebElement deliverToButton = driver.findElement(By.id("nav-global-location-popover-link"));

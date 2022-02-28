@@ -53,7 +53,7 @@ public class DeliverToTest {
         wait.until(ExpectedConditions.stalenessOf(oldLocation));
         String actualLocation = driver.findElement(By.id("glow-ingress-line2")).getText();
 
-        Assert.assertTrue(actualLocation.contains("Nashville 37219"));
+        Assert.assertTrue(actualLocation.contains("Nashville 37219"), "The 'Deliver to' location isn't updated.");
     }
 
     @Test
@@ -69,7 +69,7 @@ public class DeliverToTest {
             list.add(element.getText());
         }
 
-        Assert.assertTrue(list.contains("Poland"));
+        Assert.assertTrue(list.contains("Poland"), "The list of countries doesn't contain Poland.");
     }
 
     @Test
@@ -96,7 +96,7 @@ public class DeliverToTest {
         keyboardItem.click();
 
         String depositToInfo = driver.findElement(By.xpath("//*[@id='exports_desktop_qualifiedBuybox_tlc_feature_div']/span[@class='a-size-base a-color-secondary']")).getText();
-        Assert.assertTrue(depositToInfo.contains(country));
+        Assert.assertTrue(depositToInfo.contains(country), "The chosen shipping country isn't updated.");
     }
 
     @AfterMethod

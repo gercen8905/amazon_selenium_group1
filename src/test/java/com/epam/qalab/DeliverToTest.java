@@ -20,6 +20,7 @@ import java.util.List;
 
 public class DeliverToTest {
     WebDriver driver;
+    String country = "Bulgaria";
 
     @BeforeTest
     public void setUp() {
@@ -79,7 +80,7 @@ public class DeliverToTest {
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[@class='a-dropdown-container']")));
         Select select = new Select(driver.findElement(By.xpath("//select[@class='a-native-dropdown']")));
-        select.selectByVisibleText("Bulgaria");
+        select.selectByVisibleText(country);
 
         WebElement done = driver.findElement(By.xpath("//button[@name='glowDoneButton']"));
         done.click();
@@ -92,7 +93,7 @@ public class DeliverToTest {
         keyboardItem.click();
 
         String depositToInfo = driver.findElement(By.xpath("//*[@id='exports_desktop_qualifiedBuybox_tlc_feature_div']/span[@class='a-size-base a-color-secondary']")).getText();
-        Assert.assertTrue(depositToInfo.contains("Bulgaria"));
+        Assert.assertTrue(depositToInfo.contains(country));
     }
 
     @AfterMethod

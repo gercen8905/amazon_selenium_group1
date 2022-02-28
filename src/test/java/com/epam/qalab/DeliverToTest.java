@@ -36,18 +36,18 @@ public class DeliverToTest {
         WebElement oldLocation = driver.findElement(By.id("glow-ingress-line2"));
 
         WebElement deliverToButton = driver.findElement(By.id("nav-global-location-popover-link"));
-        deliverToButton.click();
+        clickButton(deliverToButton);
 
         WebElement zipCodeField = new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.visibilityOfElementLocated(By.id("GLUXZipUpdateInput")));
         zipCodeField.sendKeys("37219");
 
         WebElement applyButton = driver.findElement(By.xpath("//*[@data-action='GLUXPostalUpdateAction']"));
-        applyButton.click();
+        clickButton(applyButton);
 
         WebElement continueButton = new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='a-popover-footer']//input[@id='GLUXConfirmClose']")));
-        continueButton.click();
+        clickButton(continueButton);
 
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.stalenessOf(oldLocation));
@@ -59,7 +59,7 @@ public class DeliverToTest {
     @Test
     public void verifyPolandIsPresent() {
         WebElement deliverToButton = driver.findElement(By.id("nav-global-location-popover-link"));
-        deliverToButton.click();
+        clickButton(deliverToButton);
 
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[@class='a-dropdown-container']")));
@@ -77,7 +77,7 @@ public class DeliverToTest {
         WebElement oldLocation = driver.findElement(By.id("glow-ingress-line2"));
 
         WebElement deliverToButton = driver.findElement(By.id("nav-global-location-popover-link"));
-        deliverToButton.click();
+        clickButton(deliverToButton);
 
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[@class='a-dropdown-container']")));
@@ -85,18 +85,22 @@ public class DeliverToTest {
         select.selectByVisibleText(country);
 
         WebElement done = driver.findElement(By.xpath("//button[@name='glowDoneButton']"));
-        done.click();
+        clickButton(done);
 
         wait.until(ExpectedConditions.stalenessOf(oldLocation));
         WebElement category = driver.findElement(By.xpath("//a[@aria-label='Keyboards']"));
-        category.click();
+        clickButton(category);
 
         WebElement keyboardItem = new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(@class,'s-main-slot ')]/div[@data-component-type='s-search-result'][1]//h2/a")));
-        keyboardItem.click();
+        clickButton(keyboardItem);
 
         String depositToInfo = driver.findElement(By.xpath("//*[@id='exports_desktop_qualifiedBuybox_tlc_feature_div']/span[@class='a-size-base a-color-secondary']")).getText();
         Assert.assertTrue(depositToInfo.contains(country), "The chosen shipping country isn't updated.");
+    }
+
+    private void clickButton(WebElement button) {
+        button.click();
     }
 
     @AfterMethod

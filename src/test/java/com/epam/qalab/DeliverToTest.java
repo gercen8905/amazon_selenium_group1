@@ -61,7 +61,7 @@ public class DeliverToTest {
         WebElement deliverToButton = driver.findElement(By.id("nav-global-location-popover-link"));
         clickButton(deliverToButton);
 
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[@class='a-dropdown-container']")));
         Select select = new Select(driver.findElement(By.xpath("//select[@class='a-native-dropdown']")));
         List<String> list = new ArrayList<>();
@@ -79,7 +79,7 @@ public class DeliverToTest {
         WebElement deliverToButton = driver.findElement(By.id("nav-global-location-popover-link"));
         clickButton(deliverToButton);
 
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[@class='a-dropdown-container']")));
         Select select = new Select(driver.findElement(By.xpath("//select[@class='a-native-dropdown']")));
         select.selectByVisibleText(country);

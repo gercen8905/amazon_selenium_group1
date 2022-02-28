@@ -33,23 +33,20 @@ public class DeliverToTest {
 
     @Test
     public void verifyZipCodeUpdate() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement oldLocation = driver.findElement(By.id("glow-ingress-line2"));
 
-        WebElement deliverToButton = driver.findElement(By.id("nav-global-location-popover-link"));
-        clickButton(deliverToButton);
+        deliverToButtonClick();
 
-        WebElement zipCodeField = new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.visibilityOfElementLocated(By.id("GLUXZipUpdateInput")));
+        WebElement zipCodeField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("GLUXZipUpdateInput")));
         zipCodeField.sendKeys("37219");
 
         WebElement applyButton = driver.findElement(By.xpath("//*[@data-action='GLUXPostalUpdateAction']"));
-        clickButton(applyButton);
+        applyButton.click();
 
-        WebElement continueButton = new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='a-popover-footer']//input[@id='GLUXConfirmClose']")));
-        clickButton(continueButton);
+        WebElement continueButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='a-popover-footer']//input[@id='GLUXConfirmClose']")));
+        continueButton.click();
 
-        WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.stalenessOf(oldLocation));
         String actualLocation = driver.findElement(By.id("glow-ingress-line2")).getText();
 
@@ -58,10 +55,9 @@ public class DeliverToTest {
 
     @Test
     public void verifyPolandIsPresent() {
-        WebElement deliverToButton = driver.findElement(By.id("nav-global-location-popover-link"));
-        clickButton(deliverToButton);
-
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        deliverToButtonClick();
+
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[@class='a-dropdown-container']")));
         Select select = new Select(driver.findElement(By.xpath("//select[@class='a-native-dropdown']")));
         List<String> list = new ArrayList<>();
@@ -74,33 +70,32 @@ public class DeliverToTest {
 
     @Test
     public void verifyShippingToCountry() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement oldLocation = driver.findElement(By.id("glow-ingress-line2"));
 
-        WebElement deliverToButton = driver.findElement(By.id("nav-global-location-popover-link"));
-        clickButton(deliverToButton);
+        deliverToButtonClick();
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[@class='a-dropdown-container']")));
         Select select = new Select(driver.findElement(By.xpath("//select[@class='a-native-dropdown']")));
         select.selectByVisibleText(country);
 
         WebElement done = driver.findElement(By.xpath("//button[@name='glowDoneButton']"));
-        clickButton(done);
+        done.click();
 
         wait.until(ExpectedConditions.stalenessOf(oldLocation));
         WebElement category = driver.findElement(By.xpath("//a[@aria-label='Keyboards']"));
-        clickButton(category);
+        category.click();
 
-        WebElement keyboardItem = new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(@class,'s-main-slot ')]/div[@data-component-type='s-search-result'][1]//h2/a")));
-        clickButton(keyboardItem);
+        WebElement keyboardItem = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(@class,'s-main-slot ')]/div[@data-component-type='s-search-result'][1]//h2/a")));
+        keyboardItem.click();
 
         String depositToInfo = driver.findElement(By.xpath("//*[@id='exports_desktop_qualifiedBuybox_tlc_feature_div']/span[@class='a-size-base a-color-secondary']")).getText();
         Assert.assertTrue(depositToInfo.contains(country), "The chosen shipping country isn't updated.");
     }
 
-    private void clickButton(WebElement button) {
-        button.click();
+    private void deliverToButtonClick() {
+        WebElement deliverToButton = driver.findElement(By.id("nav-global-location-popover-link"));
+        deliverToButton.click();
     }
 
     @AfterMethod

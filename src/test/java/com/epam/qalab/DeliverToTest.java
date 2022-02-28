@@ -92,7 +92,7 @@ public class DeliverToTest {
         category.click();
 
         WebElement keyboardItem = new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@class='s-main-slot s-result-list s-search-results sg-row']/div[@data-component-type='s-search-result'][1]//h2/a")));
+                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(@class,'s-main-slot ')]/div[@data-component-type='s-search-result'][1]//h2/a")));
         keyboardItem.click();
 
         String depositToInfo = driver.findElement(By.xpath("//*[@id='exports_desktop_qualifiedBuybox_tlc_feature_div']/span[@class='a-size-base a-color-secondary']")).getText();

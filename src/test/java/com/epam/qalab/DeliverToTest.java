@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -92,6 +93,11 @@ public class DeliverToTest {
 
         String depositToInfo = driver.findElement(By.xpath("//*[@id='exports_desktop_qualifiedBuybox_tlc_feature_div']/span[@class='a-size-base a-color-secondary']")).getText();
         Assert.assertTrue(depositToInfo.contains("Bulgaria"));
+    }
+
+    @AfterMethod
+    public void preparePage() {
+        driver.navigate().refresh();
     }
 
     @AfterTest

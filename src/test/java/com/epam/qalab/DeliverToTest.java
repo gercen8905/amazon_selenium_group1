@@ -64,7 +64,7 @@ public class DeliverToTest {
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[@class='a-dropdown-container']")));
         Select select = new Select(driver.findElement(By.xpath("//select[@class='a-native-dropdown']")));
-        List list = new ArrayList<>();
+        List<String> list = new ArrayList<>();
         for (WebElement element: select.getOptions()) {
             list.add(element.getText());
         }

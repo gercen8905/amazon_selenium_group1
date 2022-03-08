@@ -15,11 +15,12 @@ public class ZipCodeTest extends BaseTest {
 
     @Test
     public void verifyZipCodeTest() {
+        String zipCode = "37219";
         HomePage homePage = new HomePage(webDriver);
         String newLocation = homePage
                 .open()
                 .deliverToButtonClick()
-                .inputZipCode("37219")
+                .inputZipCode(zipCode)
                 .applyButtonClick()
                 .continueButtonClick()
                 .refreshPage()

@@ -21,10 +21,11 @@ public class ShippingCountryTest extends BaseTest {
                 .open()
                 .deliverToButtonClick()
                 .selectCountry("Bulgaria")
-                        .doneButtonClick()
-                                .refreshPage()
-                                        .choosingCategory()
-                                                .choosingItem().getShippingCountry();
+                .doneButtonClick()
+                .refreshPage()
+                .choosingCategory()
+                .choosingItem()
+                .getShippingCountry();
 
 
         Assert.assertTrue(shippingCountry.contains(country), "The chosen shipping country isn't updated.");

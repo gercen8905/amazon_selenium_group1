@@ -20,7 +20,7 @@ public class PolandIsPresentTest extends BaseTest {
         List<String> listOfCountries = homePage
                 .open()
                 .deliverToButtonClick()
-                        .getListOfCountries();
+                .getListOfCountries();
 
         Assert.assertTrue(listOfCountries.contains("Poland"), "The list of countries doesn't contain Poland.");
     }

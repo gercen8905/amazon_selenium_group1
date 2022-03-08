@@ -5,17 +5,18 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class PropertyHolder {
-    private final Properties properties = new Properties();
+    private final Properties property = new Properties();
 
     {
-        try (FileInputStream fis = new FileInputStream("src/test/resources/browser.properties")) {
-            properties.load(fis);
+        try (FileInputStream fis = new FileInputStream("src/test/resources/webdriver/browser.properties")) {
+            property.load(fis);
+
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }
     }
 
     public String readProperty(String propertyName) {
-        return properties.getProperty(propertyName);
+        return property.getProperty(propertyName);
     }
 }

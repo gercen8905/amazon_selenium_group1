@@ -1,5 +1,6 @@
-package com.epam.qalab;
+package com.epam.qalab.uitests;
 
+import com.epam.qalab.BaseTest;
 import com.epam.qalab.pageObject.pages.AddedToCartPage;
 import com.epam.qalab.pageObject.pages.CartPage;
 import com.epam.qalab.pageObject.pages.HomePage;

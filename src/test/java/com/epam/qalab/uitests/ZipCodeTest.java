@@ -7,6 +7,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
 public class ZipCodeTest extends BaseTest {
+    String zipCode = "37219";
 
     @AfterTest
     public void tearDown() {
@@ -15,7 +16,7 @@ public class ZipCodeTest extends BaseTest {
 
     @Test
     public void verifyZipCodeTest() {
-        String zipCode = "37219";
+
         HomePage homePage = new HomePage(webDriver);
         String newLocation = homePage
                 .open()

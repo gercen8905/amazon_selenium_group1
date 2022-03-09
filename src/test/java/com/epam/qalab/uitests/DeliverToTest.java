@@ -5,10 +5,21 @@ import com.epam.qalab.pageObject.pages.HomePage;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import java.util.List;
 
 public class DeliverToTest extends BaseTest {
+
+    @BeforeTest
+    public void setUp() {
+        setUpDriver();
+    }
+
+    @AfterTest
+    public void tearDown() {
+        quit();
+    }
 
     @Test
     public void verifyZipCode() {
@@ -59,8 +70,4 @@ public class DeliverToTest extends BaseTest {
         webDriver.navigate().refresh();
     }
 
-    @AfterTest
-    public void tearDown() {
-        quit();
-    }
 }

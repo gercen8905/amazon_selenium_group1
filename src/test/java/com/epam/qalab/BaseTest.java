@@ -1,9 +1,4 @@
 package com.epam.qalab;
-/* 
-@author
-Marat Lagun
-created on 3/2/22   
-*/
 
 import com.epam.qalab.factory.WebDriverFactory;
 import org.openqa.selenium.WebDriver;

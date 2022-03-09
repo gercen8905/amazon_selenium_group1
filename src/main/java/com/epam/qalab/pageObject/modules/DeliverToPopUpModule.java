@@ -39,18 +39,18 @@ public class DeliverToPopUpModule extends BasePage {
     }
 
     public DeliverToPopUpModule inputZipCode(String zipCode) {
-        this.wait.until(ExpectedConditions.visibilityOf(this.zipCodeField));
-        this.zipCodeField.sendKeys(zipCode);
+        wait.until(ExpectedConditions.visibilityOf(zipCodeField));
+        zipCodeField.sendKeys(zipCode);
         return this;
     }
 
     public DeliverToPopUpModule applyButtonClick() {
-        this.applyButton.click();
+        applyButton.click();
         return this;
     }
 
     public HomePage continueButtonClick() {
-        this.wait.until(ExpectedConditions.visibilityOf(this.continueButton));
+        wait.until(ExpectedConditions.visibilityOf(continueButton));
         continueButton.click();
         return new HomePage(webDriver);
     }

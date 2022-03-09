@@ -33,7 +33,7 @@ public class HomePage extends BasePage {
     }
 
     public DeliverToPopUpModule deliverToButtonClick() {
-        this.deliverToButton.click();
+        deliverToButton.click();
         return new DeliverToPopUpModule(webDriver);
     }
 
@@ -43,7 +43,7 @@ public class HomePage extends BasePage {
     }
 
     public String getNewLocation() {
-        return this.newLocation.getText();
+        return newLocation.getText();
     }
 
     public CategoryPage choosingCategory() {

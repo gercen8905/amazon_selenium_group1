@@ -1,5 +1,6 @@
-package com.epam.qalab;
+package com.epam.qalab.uitests;
 
+import com.epam.qalab.BaseTest;
 import com.epam.qalab.pageObject.pages.HomePage;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;

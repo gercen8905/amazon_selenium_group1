@@ -24,17 +24,17 @@ public class StartPage extends BasePage {
     }
 
     public StartPage open() {
-        driver.get("https://www.amazon.com");
+        webDriver.get("https://www.amazon.com");
         return this;
     }
 
     public SearchResultPage search(String input) {
-        WebElement searchField = new WebDriverWait(driver, Duration.ofSeconds(1))
+        WebElement searchField = new WebDriverWait(webDriver, Duration.ofSeconds(1))
                 .until(ExpectedConditions.visibilityOfElementLocated(By.id("twotabsearchtextbox")));
         searchField.clear();
         searchField.sendKeys(input);
         searchButton.click();
-        return new SearchResultPage(driver);
+        return new SearchResultPage(webDriver);
 
     }
 }

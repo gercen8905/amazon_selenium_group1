@@ -22,6 +22,8 @@ import static org.openqa.selenium.support.locators.RelativeLocator.with;
 
 
 public class SearchFieldTest extends BaseTest {
+    String incorrect = "qwe4t5et6789tz3js4jdm1234567890";
+    String correct = "laptop";
 
     @BeforeTest
     @Override
@@ -43,7 +45,6 @@ public class SearchFieldTest extends BaseTest {
                         + search.getInstance(IncorrectSearchResultPage.class).getActualWithDot(),
                 "No results for " + incorrect + ".",
                 "Nevertheless something was found");
-
     }
 
     @Test

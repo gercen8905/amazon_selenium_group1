@@ -1,4 +1,4 @@
-package com.epam.qalab.pageObject;
+package com.epam.qalab.pageobject;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;

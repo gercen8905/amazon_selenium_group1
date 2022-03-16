@@ -1,16 +1,16 @@
 package com.epam.qalab;
 
-import org.openqa.selenium.WebDriver;
 import com.epam.qalab.factory.WebDriverFactory;
+import org.openqa.selenium.WebDriver;
 
 public class BaseTest {
-    protected final WebDriver webDriver = new WebDriverFactory().getWebDriver();
+    protected final WebDriver driver = new WebDriverFactory().getWebDriver();
 
     protected void setUpDriver() {
-        webDriver.manage().window().maximize();
+        driver.manage().window().maximize();
     }
 
     protected void quit() {
-        webDriver.quit();
+        driver.quit();
     }
 }

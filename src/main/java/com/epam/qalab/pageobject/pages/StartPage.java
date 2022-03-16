@@ -28,13 +28,13 @@ public class StartPage extends BasePage {
         return this;
     }
 
-    public SearchResultPage search(String input) {
+    public SearchResultPageWithoutGenerics search(String input) {
         WebElement searchField = new WebDriverWait(webDriver, Duration.ofSeconds(1))
                 .until(ExpectedConditions.visibilityOfElementLocated(By.id("twotabsearchtextbox")));
         searchField.clear();
         searchField.sendKeys(input);
         searchButton.click();
-        return new SearchResultPage(webDriver);
+        return new SearchResultPageWithoutGenerics(webDriver);
 
     }
 }
